@@ -6,7 +6,9 @@ set -u
 export TZ=America/New_York
 minutes=${MINUTES:-340}
 every=${EVERY:-15}
-sites=(https://marcusberley.com/ https://suburbandadmode.com/ https://cafenotes.org/)
+# robots.txt, not the home page: Cloudflare counts only HTML as a page view, so a check every 15 seconds (5,760 a
+# day a site) stays out of the traffic numbers (site-pulse.csv). It still proves the site answers.
+sites=(https://marcusberley.com/robots.txt https://suburbandadmode.com/robots.txt https://cafenotes.org/robots.txt)
 mkdir -p log
 err=$(mktemp)
 start=$(date '+%F %T')

@@ -4,6 +4,7 @@ Checks marcusberley.com, suburbandadmode.com and cafenotes.org every 15 seconds 
 
 - `log/<day>.tsv`: one line per failure (time in New York, site, code, curl's error), and a `# run` line at the end of each run with its rounds and failures. A day with only `# run` lines had no failures.
 - `watch.sh` does the checking; `.github/workflows/watch.yml` runs it, one run at a time, each about 5 h 40 min.
+- It fetches each site's `robots.txt`, not the home page, so it doesn't count as page views in Cloudflare's traffic numbers.
 - The requests carry `X-Termwatch-Probe: 1`, as the server's probe does, so access logs can leave them out.
 
 Public on purpose, so Actions minutes are free. It holds only the three public addresses and whether they answered.
